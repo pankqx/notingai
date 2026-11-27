@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Nothing AI — speak freely, think clearly, keep everything</title>
+  <meta name="description" content="A quiet, beautiful voice notebook. Dictate with structure, shape it with AI, hear it read back softly.">
+  <meta name="theme-color" content="#F5F1E8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Noto+Serif+JP:wght@500&text=%E7%84%A1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <script>
+    // apply theme before paint
+    try { const s = JSON.parse(localStorage.getItem('nai.settings') || '{}');
+      if (s.theme === 'ink') document.documentElement.classList.add('ink');
+      if (s.grain === false) document.documentElement.classList.add('nograin');
+      if (s.reduceMotion) document.documentElement.classList.add('calm'); } catch (e) {}
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+    <filter id="brush"><feTurbulence type="fractalNoise" baseFrequency=".02 .9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter>
+  </svg>
+
+  <div id="loader" aria-hidden="true">
+    <div class="ld-inner">
+      <svg class="ld-matrix" id="ldMatrix"></svg>
+      <div class="ld-line">
+        <div class="ld-tag" id="ldTag"><span class="cur"></span></div>
+        <div class="ld-ai" id="ldAi">ai</div>
+      </div>
+      <div class="ld-log" id="ldLog"></div>
+    </div>
+    <button class="ld-skip" id="ldSkip">TAP TO SKIP</button>
+  </div>
+
+  <div class="app">
+    <aside class="rail" aria-label="Primary">
+      <div class="brand">
+        <a href="#/" id="railMark" aria-label="Nothing AI home"></a>
+        <span class="seal sm">無</span>
+      </div>
+      <nav>
+        <a href="#/record" data-nav="record" class="rec"><span class="n">01</span><span class="l">Record</span></a>
+        <a href="#/notes" data-nav="notes"><span class="n">02</span><span class="l">Notes</span></a>
+        <a href="#/ask" data-nav="ask"><span class="n">03</span><span class="l">Ask</span></a>
+        <a href="#/" data-nav="home"><span class="n">00</span><span class="l">Index</span></a>
+      </nav>
+      <div class="foot">
+        <button class="iconbtn" data-open-settings aria-label="Settings" title="Settings (,)"></button>
+        <div class="clock" id="railClock"></div>
+      </div>
+    </aside>
+
+    <div class="stage-col">
+      <header class="topbar">
+        <span id="topMark"></span>
+        <span class="stamp" id="topStamp"></span>
+        <button class="iconbtn" data-open-settings aria-label="Settings"></button>
+      </header>
+      <main id="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <nav class="bottomnav" aria-label="Primary">
+    <a href="#/" data-nav="home"></a>
+    <a href="#/notes" data-nav="notes"></a>
+    <a href="#/record" data-nav="record" class="recbtn"></a>
+    <a href="#/ask" data-nav="ask"></a>
+    <a href="#/notes?q=1" data-nav="search"></a>
+  </nav>
+
+  <div class="player" id="player" role="region" aria-label="Read aloud">
+    <div class="pl-bar"><i id="plProg"></i></div>
+    <div class="pl-in">
+      <div class="pl-text">
+        <div class="pl-meta"><span class="wavelet"><i></i><i></i><i></i><i></i></span><span id="plMeta">READING</span></div>
+        <div class="pl-line" id="plLine">…</div>
+      </div>
+      <div class="pl-ctl">
+        <button id="plRate" class="rate" aria-label="Speed">1.0×</button>
+        <button id="plBack" aria-label="Previous sentence"></button>
+        <button id="plPlay" class="main" aria-label="Pause"></button>
+        <button id="plFwd" aria-label="Next sentence"></button>
+        <button id="plStop" aria-label="Stop"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-wrap" id="sheetWrap"><div class="sheet" id="sheet"></div></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
