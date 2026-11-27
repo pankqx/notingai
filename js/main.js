@@ -42,7 +42,7 @@ function chrome() {
   tick(); setInterval(tick, 15000);
   document.addEventListener('settings', e => {
     const { k, v } = e.detail;
-    if (k === 'theme') { document.documentElement.classList.toggle('ink', v === 'ink'); $('meta[name=theme-color]').content = v === 'ink' ? '#121211' : '#F5F1E8'; }
+    if (k === 'theme') { document.documentElement.classList.toggle('ink', v === 'ink'); $('meta[name=theme-color]').content = v === 'ink' ? '#111612' : '#DCE3D3'; }
     if (k === 'grain') document.documentElement.classList.toggle('nograin', !v);
     if (k === 'reduceMotion') document.documentElement.classList.toggle('calm', v);
   });

@@ -32,7 +32,7 @@ export class DotWave {
   frame(now) {
     this.raf = requestAnimationFrame(this.frame);
     const css = getComputedStyle(document.documentElement);
-    const ink = css.getPropertyValue('--ink').trim() || '#171717';
+    const ink = css.getPropertyValue('--ink').trim() || '#141714';
     const faint = css.getPropertyValue('--rule').trim() || '#C9C2B7';
     const red = css.getPropertyValue('--red').trim() || '#D83227';
     let lv;

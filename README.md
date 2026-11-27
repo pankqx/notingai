@@ -2,7 +2,7 @@
 
 **Speak freely. Think clearly. Keep everything.**
 
-A quiet voice notebook. It's an installable web app (PWA) that looks like a typewriter page on warm paper, with dot-matrix details and one signal-red accent. There are no rounded corners anywhere.
+A quiet voice notebook. It's an installable web app (PWA) that looks like a typewriter page on pale celadon (sage-green) paper, with dot-matrix details and one signal-red accent. There are no rounded corners anywhere.
 
 ## What it does
 

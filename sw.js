@@ -1,5 +1,5 @@
 // Offline app shell. AI calls, fonts and the neural voice model are never cached here.
-const CACHE = 'nothing-ai-v1';
+const CACHE = 'nothing-ai-v2';
 const SHELL = ['./', 'index.html', 'css/app.css', 'js/main.js', 'js/store.js', 'js/blocks.js', 'js/speech.js', 'js/editor.js',
   'js/wave.js', 'js/ai.js', 'js/tts.js', 'js/ui.js', 'js/kokoro-worker.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
